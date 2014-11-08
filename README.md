@@ -36,6 +36,14 @@ class PurchasePerformanceReport < ReportCard::Report
 end
 ```
 
+With reports defined in `app/reports`, you can navigate to
+`/report_cards/reports` in your browser to begin generating reports.
+
+```erb
+# in your view
+<%= link_to 'Reports', report_card_reports_path %>
+```
+
 ## Configuration
 
 ```ruby
