@@ -8,4 +8,7 @@ module ReportCard
 
   mattr_accessor :recipient_email
   self.recipient_email = -> { 'change-me@example.com' }
+
+  mattr_accessor :from_email
+  self.from_email = 'change-me@example.com'
 end
