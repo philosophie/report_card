@@ -44,6 +44,33 @@ With reports defined in `app/reports`, you can navigate to
 <%= link_to 'Reports', report_card_reports_path %>
 ```
 
+### Filters
+
+```ruby
+class UsersReport < ReportCard::Report
+  include ReportCard::Filters
+
+  filter :joined_after, Date
+  filter :name, String
+
+  validates :joined_after, presence: true
+
+  def to_csv(csv)
+    csv << %w[name email]
+
+    users.find_each do |user|
+      csv << [user.name, user.email]
+    end
+  end
+
+  private
+
+  def users
+    User.where('created_at > ?', joined_after).where('name LIKE ?', "%#{name}%")
+  end
+end
+```
+
 ## Configuration
 
 ```ruby

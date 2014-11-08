@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '>= 4.0'
   s.add_dependency 'carrierwave', '>= 0.9'
   s.add_dependency 'sidekiq', '>= 2.17'
+  s.add_dependency 'active_attr', '>= 0.8.4'
 
   s.add_development_dependency 'sqlite3'
 end
