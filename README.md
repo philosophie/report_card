@@ -50,4 +50,5 @@ With reports defined in `app/reports`, you can navigate to
 # config/initializers/report_card.rb
 ReportCard.parent_controller = 'Admin::BaseController'
 ReportCard.recipient_email = proc { current_admin.email }
+ReportCard.from_email = 'support@mysite.com'
 ```

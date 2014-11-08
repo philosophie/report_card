@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    report_card (0.0.1)
+    report_card (0.0.2)
       carrierwave (>= 0.9)
       rails (>= 4.0)
       sidekiq (>= 2.17)
