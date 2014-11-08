@@ -1,0 +1,22 @@
+<h1>Reports</h1>
+
+<section>
+  <table class='table table-bordered table-striped'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th width='180'></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.human_name %></td>
+          <td>
+            <%= button_to 'Generate', { controller: 'report_card/reports', action: :create, report_name: report.name }, method: :post, class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
