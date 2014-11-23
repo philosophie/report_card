@@ -7,7 +7,7 @@ module ReportCard
     def perform(klass_name, recipient_email)
       report = ReportCard::Report.find(klass_name).new
 
-      tempfile = Tempfile.new('report_card')
+      tempfile = Tempfile.new(['report_card', '.csv'])
       csv = CSV.open(tempfile, 'wb')
       report.to_csv(csv)
 
