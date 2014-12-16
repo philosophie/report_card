@@ -11,6 +11,8 @@ module ReportCard
       csv = CSV.open(tempfile, 'wb')
       report.to_csv(csv)
 
+      csv.flush
+
       uploader = ReportCard::Uploader.new
       uploader.store!(csv)
 
