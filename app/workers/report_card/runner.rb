@@ -10,11 +10,10 @@ module ReportCard
       tempfile = Tempfile.new(['report_card', '.csv'])
       csv = CSV.open(tempfile, 'wb')
       report.to_csv(csv)
+      csv.close
 
       uploader = ReportCard::Uploader.new
       uploader.store!(csv)
-
-      csv.close
 
       ReportCard::Mailer.report(uploader.url, recipient_email).deliver
     end
