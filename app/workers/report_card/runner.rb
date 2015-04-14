@@ -4,8 +4,8 @@ module ReportCard
   class Runner
     include Sidekiq::Worker
 
-    def perform(klass_name, recipient_email)
-      report = ReportCard::Report.find(klass_name).new
+    def perform(params, recipient_email)
+      report = ReportCard::Report.find(params['report_name']).new(params)
 
       tempfile = Tempfile.new(['report_card', '.csv'])
       csv = CSV.open(tempfile, 'wb')

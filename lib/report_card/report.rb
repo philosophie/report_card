@@ -1,5 +1,7 @@
 module ReportCard
   class Report
+    attr_accessor :params
+
     class ReportNotFound < StandardError; end
 
     def self.all
@@ -17,6 +19,10 @@ module ReportCard
 
     def self.exists?(name)
       all.any? { |r| r.name == name }
+    end
+
+    def initialize(params)
+      self.params = params
     end
   end
 end
