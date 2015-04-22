@@ -6,11 +6,17 @@ module ReportCard
 
     def create
       if ReportCard::Report.exists?(params[:report_name])
-        email = instance_eval(&ReportCard.recipient_email)
-        ReportCard::Runner.perform_async(params, email)
-        redirect_to report_card_reports_path, flash: { success: 'Generating report. It will be emailed to you.' }
+
+        unless params.key?(:email_options)
+          params[:email_options] = {}
+          params[:email_options][:recipient_email] = instance_eval(&ReportCard.recipient_email)
+        end
+
+        flash_success = params[:flash_success] || instance_eval(&ReportCard.flash_success)
+        ReportCard::Runner.perform_async(params)
+        redirect_to :back, flash: { success: flash_success }
       else
-        redirect_to report_card_reports_path, flash: { error: 'Could not find report' }
+        redirect_to :back, flash: { error: 'Could not find report' }
       end
     end
   end

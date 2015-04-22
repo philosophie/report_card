@@ -46,6 +46,9 @@ With reports defined in `app/reports`, you can navigate to
 
 ## Configuration
 
+Use proc instead of string  for recipient_email and flash_success in case they need to be evaluated.
+For instance, proc { current_admin.email }
+
 ```ruby
 # config/initializers/report_card.rb
 ReportCard.parent_controller = 'Admin::BaseController'
