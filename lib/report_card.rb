@@ -7,7 +7,7 @@ module ReportCard
   self.parent_controller = 'ApplicationController'
 
   mattr_accessor :recipient_email
-  self.recipient_email = -> { 'change-me@example.com' }
+  self.recipient_email = proc { 'change-me@example.com' }
 
   mattr_accessor :from_email
   self.from_email = 'change-me@example.com'
@@ -19,6 +19,6 @@ module ReportCard
   self.body = 'Download your report: '
 
   mattr_accessor :flash_success
-  self.flash_success = -> { 'Generating report. It will be emailed to you.' }
+  self.flash_success = proc { 'Generating report. It will be emailed to you.' }
 
 end
