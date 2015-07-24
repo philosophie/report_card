@@ -1,3 +1,5 @@
+require 'carrierwave'
+
 module ReportCard
   class Engine < ::Rails::Engine
     initializer 'report_card.load_reports_in_development' do |app|
