@@ -13,6 +13,8 @@ module ReportCard
       report.to_csv(csv)
       csv.close
 
+      csv.flush
+
       uploader = ReportCard::Uploader.new
       uploader.store!(csv)
 
